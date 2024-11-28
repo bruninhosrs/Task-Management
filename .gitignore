@@ -1,0 +1,11 @@
+# Ignore arquivos compilados
+*.class
+
+# Ignore pastas de IDE
+.classpath
+.project
+.settings/
+.vscode/
+
+# Ignore bibliotecas locais
+lib/
