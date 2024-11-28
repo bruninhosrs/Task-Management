@@ -35,13 +35,13 @@ public class Application {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
             if (exchange.getRequestMethod().equalsIgnoreCase("OPTIONS")) {
-                // Resposta para preflight (CORS)
+                
                 handleCors(exchange);
                 return;
             }
 
             if (exchange.getRequestMethod().equalsIgnoreCase("POST")) {
-                // Processa o login
+                
                 String[] credentials = new String(exchange.getRequestBody().readAllBytes()).split("&");
                 String username = credentials[0].split("=")[1];
                 String password = credentials[1].split("=")[1];
@@ -57,19 +57,19 @@ public class Application {
                 os.write(response.getBytes());
                 os.close();
             } else {
-                exchange.sendResponseHeaders(405, -1); // Método não permitido
+                exchange.sendResponseHeaders(405, -1); 
             }
         }
     }
 
-    // Handler para Tasks
+    
     static class TaskHandler implements HttpHandler {
         private final TaskService taskService = new TaskService();
 
         @Override
         public void handle(HttpExchange exchange) throws IOException {
             if (exchange.getRequestMethod().equalsIgnoreCase("OPTIONS")) {
-                // Resposta para preflight (CORS)
+                
                 handleCors(exchange);
                 return;
             }
@@ -93,7 +93,7 @@ public class Application {
                 }
                 json.append("]");
 
-                // Configura os cabeçalhos e envia a resposta
+                
                 exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
                 exchange.getResponseHeaders().add("Content-Type", "application/json");
                 exchange.sendResponseHeaders(200, json.toString().getBytes().length);
@@ -102,16 +102,16 @@ public class Application {
                 os.write(json.toString().getBytes());
                 os.close();
             } else {
-                exchange.sendResponseHeaders(405, -1); // Método não permitido
+                exchange.sendResponseHeaders(405, -1);
             }
         }
     }
 
-    // Método para adicionar cabeçalhos CORS em respostas OPTIONS (Preflight)
+    
     private static void handleCors(HttpExchange exchange) throws IOException {
         exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
         exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type");
-        exchange.sendResponseHeaders(204, -1); // No Content
+        exchange.sendResponseHeaders(204, -1); 
     }
 }

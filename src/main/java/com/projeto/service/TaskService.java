@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TaskService {
 
-    // Adicionar uma nova tarefa
+    
     public void addTask(Task task) {
         String sql = "INSERT INTO tasks (title, description, due_date, priority) VALUES (?, ?, ?, ?)";
 
@@ -17,7 +17,7 @@ public class TaskService {
 
             stmt.setString(1, task.getTitle());
             stmt.setString(2, task.getDescription());
-            stmt.setDate(3, Date.valueOf(task.getDueDate())); // Converte LocalDate para Date
+            stmt.setDate(3, Date.valueOf(task.getDueDate())); 
             stmt.setString(4, task.getPriority());
             stmt.executeUpdate();
 
@@ -28,7 +28,7 @@ public class TaskService {
         }
     }
 
-    // Listar todas as tarefas
+    
     public List<Task> getAllTasks() {
         List<Task> tasks = new ArrayList<>();
         String sql = "SELECT * FROM tasks ORDER BY due_date";
@@ -42,7 +42,7 @@ public class TaskService {
                         rs.getInt("id"),
                         rs.getString("title"),
                         rs.getString("description"),
-                        rs.getDate("due_date").toLocalDate(), // Converte Date para LocalDate
+                        rs.getDate("due_date").toLocalDate(),
                         rs.getString("priority")));
             }
 
@@ -53,7 +53,6 @@ public class TaskService {
         return tasks;
     }
 
-    // Obter uma tarefa pelo ID
     public Task getTaskById(int id) {
         String sql = "SELECT * FROM tasks WHERE id = ?";
 
@@ -68,7 +67,7 @@ public class TaskService {
                         rs.getInt("id"),
                         rs.getString("title"),
                         rs.getString("description"),
-                        rs.getDate("due_date").toLocalDate(), // Converte Date para LocalDate
+                        rs.getDate("due_date").toLocalDate(),
                         rs.getString("priority"));
             }
 
@@ -79,7 +78,6 @@ public class TaskService {
         return null;
     }
 
-    // Obter tarefas atrasadas
     public List<Task> getOverdueTasks() {
         List<Task> overdueTasks = new ArrayList<>();
         String sql = "SELECT * FROM tasks WHERE due_date < CURDATE()";
@@ -104,7 +102,6 @@ public class TaskService {
         return overdueTasks;
     }
 
-    // Obter tarefas por prioridade
     public List<Task> getTasksByPriority(String priority) {
         List<Task> tasksByPriority = new ArrayList<>();
         String sql = "SELECT * FROM tasks WHERE priority = ?";
@@ -131,7 +128,6 @@ public class TaskService {
         return tasksByPriority;
     }
 
-    // Obter contagem total de tarefas
     public int getTotalTasks() {
         String sql = "SELECT COUNT(*) AS total FROM tasks";
 
@@ -147,10 +143,9 @@ public class TaskService {
             System.err.println("Erro ao contar tarefas: " + e.getMessage());
         }
 
-        return 0; // Retorna 0 se ocorrer um erro
+        return 0; 
     }
 
-    // Remover uma tarefa pelo ID
     public boolean removeTaskById(int id) {
         String sql = "DELETE FROM tasks WHERE id = ?";
 

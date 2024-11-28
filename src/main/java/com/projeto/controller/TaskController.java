@@ -12,14 +12,14 @@ public class TaskController {
         this.taskService = new TaskService();
     }
 
-    // Adicionar uma nova tarefa
+    
     public void addTask(String title, String description, LocalDate dueDate, String priority) {
-        Task newTask = new Task(0, title, description, dueDate, priority); // ID será gerado automaticamente no banco
+        Task newTask = new Task(0, title, description, dueDate, priority);
         taskService.addTask(newTask);
         System.out.println("Tarefa criada com sucesso!");
     }
 
-    // Listar todas as tarefas
+    
     public void listTasks() {
         List<Task> tasks = taskService.getAllTasks();
 
@@ -31,7 +31,7 @@ public class TaskController {
         }
     }
 
-    // Buscar uma tarefa pelo ID
+    
     public void getTaskById(int id) {
         Task task = taskService.getTaskById(id);
 
@@ -69,7 +69,7 @@ public class TaskController {
         System.out.println("Número total de tarefas no sistema: " + totalTasks);
     }
 
-    // Remover uma tarefa pelo ID
+    
     public void removeTaskById(int id) {
         boolean removed = taskService.removeTaskById(id);
 

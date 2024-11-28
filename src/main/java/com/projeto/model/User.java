@@ -5,7 +5,7 @@ public class User {
     private String username;
     private String password;
 
-    // Construtor completo
+    
     public User(int id, String username, String password) {
         this.id = id;
         this.username = username;
@@ -37,7 +37,7 @@ public class User {
         this.password = password;
     }
 
-    // Método toString para exibir informações do usuário
+    
     @Override
     public String toString() {
         return "User{" +

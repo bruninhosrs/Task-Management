@@ -12,14 +12,14 @@ public class UserController {
         this.userService = new UserService();
     }
 
-    // Adicionar um novo usuário
+    
     public void createUser(int id, String username, String password) {
         User newUser = new User(id, username, password);
         userService.addUser(newUser);
         System.out.println("Usuário criado com sucesso!");
     }
 
-    // Listar todos os usuários
+    
     public void listUsers() {
         System.out.println("Usuários cadastrados:");
         List<User> users = userService.getAllUsers();
@@ -28,7 +28,7 @@ public class UserController {
         }
     }
 
-    // Buscar usuário pelo ID
+    
     public void getUserById(int id) {
         User user = userService.getUserById(id);
         if (user != null) {
@@ -38,7 +38,7 @@ public class UserController {
         }
     }
 
-    // Remover usuário pelo ID
+    
     public void deleteUserById(int id) {
         boolean removed = userService.removeUserById(id);
         if (removed) {

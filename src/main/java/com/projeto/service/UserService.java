@@ -8,7 +8,7 @@ import java.util.List;
 
 public class UserService {
 
-    // Adicionar um novo usuário
+    
     public void addUser(User user) {
         String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
 
@@ -25,7 +25,7 @@ public class UserService {
         }
     }
 
-    // Método para autenticar um usuário pelo username e password
+   
     public User authenticate(String username, String password) {
     String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
 
@@ -48,10 +48,10 @@ public class UserService {
         System.err.println("Erro ao autenticar usuário: " + e.getMessage());
     }
 
-    return null; // Retorna null se a autenticação falhar
+    return null; 
     }
     
-    // Obter todos os usuários
+    
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
         String sql = "SELECT * FROM users";
@@ -75,7 +75,7 @@ public class UserService {
         return users;
     }
 
-    // Obter um usuário pelo ID
+   
     public User getUserById(int id) {
         String sql = "SELECT * FROM users WHERE id = ?";
 
@@ -100,7 +100,6 @@ public class UserService {
         return null;
     }
 
-    // Remover um usuário pelo ID
     public boolean removeUserById(int id) {
         String sql = "DELETE FROM users WHERE id = ?";
 

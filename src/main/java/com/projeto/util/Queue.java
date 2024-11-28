@@ -11,9 +11,9 @@ public class Queue<T> {
         }
     }
 
-    private Node<T> front; // Início da fila
-    private Node<T> rear;  // Fim da fila
-    private int size;      // Tamanho da fila
+    private Node<T> front; 
+    private Node<T> rear;  
+    private int size;      
 
     public Queue() {
         this.front = null;
@@ -48,7 +48,7 @@ public class Queue<T> {
         return data;
     }
 
-    // Ver o elemento da frente da fila
+
     public T peek() {
         if (front == null) {
             throw new IllegalStateException("Fila está vazia");
@@ -56,12 +56,12 @@ public class Queue<T> {
         return front.data;
     }
 
-    // Verificar se a fila está vazia
+    
     public boolean isEmpty() {
         return size == 0;
     }
 
-    // Obter o tamanho da fila
+
     public int size() {
         return size;
     }

@@ -23,7 +23,6 @@ public class AVLTree<T extends Comparable<T>> {
         this.root = null;
     }
 
-    // Método para fazer o percurso in-order e aplicar um Consumer
     public void inOrderTraversal(Consumer<T> action) {
         inOrderTraversal(root, action);
     }
@@ -31,22 +30,21 @@ public class AVLTree<T extends Comparable<T>> {
     private void inOrderTraversal(Node node, Consumer<T> action) {
         if (node != null) {
             inOrderTraversal(node.left, action);
-            action.accept(node.data); // Aplica a ação ao nó atual
+            action.accept(node.data); 
             inOrderTraversal(node.right, action);
         }
     }
 
-    // Obter a altura de um nó
     private int height(Node node) {
         return (node == null) ? 0 : node.height;
     }
 
-    // Obter o fator de balanceamento de um nó
+
     private int getBalanceFactor(Node node) {
         return (node == null) ? 0 : height(node.left) - height(node.right);
     }
 
-    // Rotação à direita
+    
     private Node rotateRight(Node y) {
         Node x = y.left;
         Node T = x.right;
@@ -60,7 +58,7 @@ public class AVLTree<T extends Comparable<T>> {
         return x;
     }
 
-    // Rotação à esquerda
+    
     private Node rotateLeft(Node x) {
         Node y = x.right;
         Node T = y.left;
@@ -74,12 +72,12 @@ public class AVLTree<T extends Comparable<T>> {
         return y;
     }
 
-    // Inserir um elemento na árvore
+    
     public void insert(T data) {
         root = insert(root, data);
     }
 
-    // Remover um elemento da árvore
+    
 public void delete(T data) {
     root = delete(root, data);
 }
@@ -89,40 +87,40 @@ private Node delete(Node node, T data) {
         return node;
     }
 
-    // Navegar para o lado correto da árvore
+    
     if (data.compareTo(node.data) < 0) {
         node.left = delete(node.left, data);
     } else if (data.compareTo(node.data) > 0) {
         node.right = delete(node.right, data);
     } else {
-        // Caso: Nó com apenas um filho ou nenhum filho
+       
         if ((node.left == null) || (node.right == null)) {
             Node temp = (node.left != null) ? node.left : node.right;
 
-            // Caso: Nenhum filho
+            
             if (temp == null) {
                 node = null;
             } else {
                 node = temp;
             }
         } else {
-            // Caso: Nó com dois filhos
+            
             Node temp = getMinValueNode(node.right);
             node.data = temp.data;
             node.right = delete(node.right, temp.data);
         }
     }
 
-    // Atualizar a altura do nó
+   
     if (node == null) {
         return node;
     }
     node.height = Math.max(height(node.left), height(node.right)) + 1;
 
-    // Balancear a árvore
+    
     int balanceFactor = getBalanceFactor(node);
 
-    // Caso de rotação
+   
     if (balanceFactor > 1 && getBalanceFactor(node.left) >= 0) {
         return rotateRight(node);
     }
@@ -141,7 +139,7 @@ private Node delete(Node node, T data) {
     return node;
 }
 
-// Método auxiliar para encontrar o menor valor na subárvore
+
 private Node getMinValueNode(Node node) {
     Node current = node;
     while (current.left != null) {
@@ -161,14 +159,14 @@ private Node getMinValueNode(Node node) {
         } else if (data.compareTo(node.data) > 0) {
             node.right = insert(node.right, data);
         } else {
-            return node; // Elemento já existe, sem duplicatas
+            return node; 
         }
 
         node.height = Math.max(height(node.left), height(node.right)) + 1;
 
         int balanceFactor = getBalanceFactor(node);
 
-        // Rotação para balancear a árvore
+       
         if (balanceFactor > 1 && data.compareTo(node.left.data) < 0) {
             return rotateRight(node);
         }
@@ -187,7 +185,7 @@ private Node getMinValueNode(Node node) {
         return node;
     }
 
-    // Buscar um elemento na árvore
+    
     public boolean contains(T data) {
         return contains(root, data);
     }
@@ -204,7 +202,7 @@ private Node getMinValueNode(Node node) {
         return data.compareTo(node.data) < 0 ? contains(node.left, data) : contains(node.right, data);
     }
 
-    // Exibir a árvore em ordem
+    
     public void inOrderTraversal() {
         inOrderTraversal(root);
     }

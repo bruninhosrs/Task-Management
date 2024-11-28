@@ -9,10 +9,10 @@ public class DatabaseConnection {
     private static final String USER = "root"; 
     private static final String PASSWORD = "admin"; 
 
-    // Método para obter uma conexão com o banco de dados
+    
     public static Connection getConnection() throws SQLException {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver"); // Carregar o driver MySQL
+            Class.forName("com.mysql.cj.jdbc.Driver"); 
         } catch (ClassNotFoundException e) {
             System.err.println("Driver MySQL não encontrado: " + e.getMessage());
             throw new SQLException(e);
