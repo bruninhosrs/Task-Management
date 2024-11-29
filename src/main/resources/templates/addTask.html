@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Tarefa</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/addTask.css">
 </head>
 <body>
     <h1>Adicionar Nova Tarefa</h1>
@@ -26,7 +26,7 @@
         </select>
         <br>
         <button type="submit">Salvar</button>
-        <button type="button" onclick="window.location.href = '../templates/home.html'">Voltar</button>
+        <button type="button" onclick="window.location.href = '../templates/tasks.html'">Voltar</button>
     </form>
     <p id="add-task-error" class="error"></p>
 </body>
@@ -53,7 +53,7 @@
             }
 
             alert("Tarefa adicionada com sucesso!");
-            window.location.href = "../templates/home.html";
+            window.location.href = "../templates/tasks.html";
         } catch (error) {
             console.error("Erro ao salvar tarefa:", error);
             document.getElementById("add-task-error").textContent = "Erro ao salvar tarefa. Tente novamente.";

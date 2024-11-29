@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios de Tarefas</title>
+    <link rel="stylesheet" href="../static/css/report.css">
+</head>
+<body>
+    <header>
+        <h1>Relatórios de Tarefas</h1>
+    </header>
+    <main>
+        <button onclick="loadReport('general')">Estatísticas Gerais</button>
+        <button onclick="loadReport('overdue')">Tarefas Atrasadas</button>
+        <button onclick="loadReport('completed')">Tarefas Concluídas</button>
+        <button onclick="loadReport('by-priority')">Tarefas por Prioridade</button>
+        <button onclick="loadReport('by-period')">Tarefas do Mês Atual</button>
+        <div id="report-content">
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Gerenciador de Tarefas</p>
+    </footer>
+    <script src="../static/js/reports.js"></script>
+</body>
+</html>

@@ -21,7 +21,7 @@ document.getElementById("login-form")?.addEventListener("submit", async function
         alert(result.message);
 
         if (result.status === 200) {
-            window.location.href = "../templates/home.html";
+            window.location.href = "../templates/tasks.html";
         }
     } catch (error) {
         console.error("Erro ao tentar login:", error);
@@ -62,14 +62,13 @@ async function loadTasks() {
     }
 }
 
-async function deleteTask(id) {
+async function deleteTask(taskId) {
     try {
-        const response = await fetch("http://localhost:8080/tasks", {
+        const response = await fetch(`http://localhost:8080/tasks?id=${taskId}`, {
             method: "DELETE",
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Type": "application/json",
             },
-            body: `id=${id}`,
         });
 
         if (!response.ok) {
@@ -77,11 +76,13 @@ async function deleteTask(id) {
         }
 
         alert("Tarefa excluída com sucesso!");
+        // Atualiza a tabela de tarefas
         loadTasks();
     } catch (error) {
         console.error("Erro ao excluir tarefa:", error);
     }
 }
+
 
 document.addEventListener("DOMContentLoaded", loadTasks);
 

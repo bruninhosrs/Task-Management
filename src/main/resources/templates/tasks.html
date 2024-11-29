@@ -3,25 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarefas</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Gerenciamento de Tarefas</title>
+    <link rel="stylesheet" href="../static/css/tasks.css">
 </head>
 <body>
-    <h1>Minhas Tarefas</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Título</th>
-                <th>Descrição</th>
-                <th>Data de Vencimento</th>
-                <th>Prioridade</th>
-            </tr>
-        </thead>
-        <tbody id="task-list">
-        </tbody>
-    </table>
-    <a href="../templates/add-tasks.html" class="btn">Adicionar Nova Tarefa</a>
+    <header>
+        <h1>Gerenciamento de Tarefas</h1>
+    </header>
+    <main>
+        <table id="tasks-table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                    <th>Data de Vencimento</th>
+                    <th>Prioridade</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <button id="add-task-btn" onclick="window.location.href='../templates/addTask.html'">Adicionar Nova Tarefa</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 Gerenciador de Tarefas</p>
+    </footer>
+    <script src="../static/js/app.js"></script>
 </body>
-<script src="../static/js/app.js"></script>
 </html>
+
