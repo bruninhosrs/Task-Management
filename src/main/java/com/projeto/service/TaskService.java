@@ -60,11 +60,11 @@ public class TaskService {
         try (Connection conn = DatabaseConnection.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, task.getTitle()); // Atualiza o título
-            stmt.setString(2, task.getDescription()); // Atualiza a descrição
-            stmt.setDate(3, java.sql.Date.valueOf(task.getDueDate())); // Atualiza a data de vencimento
-            stmt.setString(4, task.getPriority()); // Atualiza a prioridade
-            stmt.setInt(5, task.getId()); // Define qual tarefa será atualizada pelo ID
+            stmt.setString(1, task.getTitle()); 
+            stmt.setString(2, task.getDescription());
+            stmt.setDate(3, java.sql.Date.valueOf(task.getDueDate())); 
+            stmt.setString(4, task.getPriority());
+            stmt.setInt(5, task.getId());
 
             int rowsAffected = stmt.executeUpdate();
 
@@ -227,8 +227,8 @@ public class TaskService {
     }
 
     public String getAllTasksAsJson() {
-        List<Task> tasks = getAllTasks(); // Obtém todas as tarefas
-        return convertTasksToJson(tasks); // Converte a lista para JSON
+        List<Task> tasks = getAllTasks(); 
+        return convertTasksToJson(tasks); 
     }
 
     // Retorna tarefas concluídas como JSON

@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.time.LocalDate;
-import java.util.List;
 
 public class Application {
     public static void main(String[] args) throws IOException {
@@ -134,7 +133,7 @@ public class Application {
                     taskId = Integer.parseInt(query.split("=")[1]);
                 } catch (Exception e) {
                     exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
-                    exchange.sendResponseHeaders(400, -1); // Bad Request
+                    exchange.sendResponseHeaders(400, -1);
                     return;
                 }
             
@@ -201,6 +200,6 @@ public class Application {
         exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type");
-        exchange.sendResponseHeaders(204, -1); // No Content
+        exchange.sendResponseHeaders(204, -1);
     }
 }

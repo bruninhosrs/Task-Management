@@ -42,7 +42,7 @@ async function loadTasks() {
 
     const tasks = await response.json();
     const tableBody = document.querySelector("#tasks-table tbody");
-    tableBody.innerHTML = ""; // Limpa a tabela antes de adicionar as tarefas
+    tableBody.innerHTML = "";
 
     tasks.forEach((task) => {
       const row = document.createElement("tr");
@@ -176,7 +176,7 @@ async function deleteTask(id) {
 
     if (response.ok) {
       alert("Tarefa excluída com sucesso!");
-      loadTasks(); // Recarrega a lista de tarefas
+      loadTasks(); 
     } else {
       const error = await response.json();
       alert(`Erro: ${error.message || "Não foi possível excluir a tarefa."}`);
@@ -202,7 +202,7 @@ async function loadReport(type) {
     }
 
     const reportData = await response.json();
-    displayReport(reportData); // Mostra os dados do relatório no HTML
+    displayReport(reportData);
   } catch (error) {
     console.error("Erro ao carregar relatório:", error);
     alert("Erro ao carregar relatório.");
