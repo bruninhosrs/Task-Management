@@ -1,5 +1,6 @@
 # Sistema de Gerenciamento de Tarefas
 Este é um sistema simples para gerenciar tarefas, desenvolvido em Java.
+
 Bruno Souza Rodrigues da Silva
 
 ## Tecnologias Utilizadas
@@ -8,5 +9,4 @@ Bruno Souza Rodrigues da Silva
 - HTML, CSS, JavaScript
 
 ## Como Executar
-1. Configure o banco de dados.
-2. Execute o arquivo `Application.java`.
+Execute o arquivo `Application.java`.
