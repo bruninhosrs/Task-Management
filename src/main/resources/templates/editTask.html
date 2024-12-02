@@ -11,75 +11,18 @@
     <form id="edit-task-form">
         <label for="title">Título:</label>
         <input type="text" id="title" name="title" required>
-        <br>
         <label for="description">Descrição:</label>
         <textarea id="description" name="description" required></textarea>
-        <br>
         <label for="dueDate">Data de Vencimento:</label>
         <input type="date" id="dueDate" name="dueDate" required>
-        <br>
         <label for="priority">Prioridade:</label>
-        <select id="priority" name="priority">
+        <select id="priority" name="priority" required>
             <option value="Alta">Alta</option>
             <option value="Média">Média</option>
             <option value="Baixa">Baixa</option>
         </select>
-        <br>
-        <button type="submit">Salvar</button>
-        <button type="button" onclick="window.location.href = '../templates/home.html'">Voltar</button>
+        <button class="save" type="submit">Salvar</button>
+        <button class="back" type="button" onclick="window.location.href='tasks.html'">Voltar</button>
     </form>
-    <p id="edit-task-error" class="error"></p>
 </body>
-<script>
-    const params = new URLSearchParams(window.location.search);
-    const taskId = params.get("id");
-
-    async function loadTaskDetails() {
-        try {
-            const response = await fetch(`http://localhost:8080/tasks?id=${taskId}`);
-            if (!response.ok) {
-                throw new Error("Erro ao carregar tarefa. Status: " + response.status);
-            }
-
-            const task = await response.json();
-            document.getElementById("title").value = task.title;
-            document.getElementById("description").value = task.description;
-            document.getElementById("dueDate").value = task.dueDate;
-            document.getElementById("priority").value = task.priority;
-        } catch (error) {
-            console.error("Erro ao carregar detalhes da tarefa:", error);
-        }
-    }
-
-    document.getElementById("edit-task-form").addEventListener("submit", async function (e) {
-        e.preventDefault();
-
-        const title = document.getElementById("title").value;
-        const description = document.getElementById("description").value;
-        const dueDate = document.getElementById("dueDate").value;
-        const priority = document.getElementById("priority").value;
-
-        try {
-            const response = await fetch("http://localhost:8080/tasks", {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: `id=${taskId}&title=${title}&description=${description}&dueDate=${dueDate}&priority=${priority}`,
-            });
-
-            if (!response.ok) {
-                throw new Error(`Erro ao atualizar tarefa. Status: ${response.status}`);
-            }
-
-            alert("Tarefa atualizada com sucesso!");
-            window.location.href = "../templates/home.html";
-        } catch (error) {
-            console.error("Erro ao atualizar tarefa:", error);
-            document.getElementById("edit-task-error").textContent = "Erro ao atualizar tarefa. Tente novamente.";
-        }
-    });
-
-    document.addEventListener("DOMContentLoaded", loadTaskDetails);
-</script>
 </html>

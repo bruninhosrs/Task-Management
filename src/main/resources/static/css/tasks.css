@@ -1,100 +1,81 @@
-/* Geral */
 body {
     font-family: Arial, sans-serif;
+    text-align: center;
     background-color: #f4f4f9;
     margin: 0;
     padding: 0;
 }
 
-header {
-    background-color: #007bff;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
 h1 {
-    margin: 0;
-    font-size: 24px;
+    margin-top: 20px;
+    font-size: 2rem;
+    color: #333;
 }
 
-/* Tabela de tarefas */
-main {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.buttons {
+    margin: 20px 0;
 }
 
-table {
-    width: 90%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    background-color: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-thead {
-    background-color: #007bff;
-    color: white;
-}
-
-th, td {
-    padding: 12px;
-    text-align: center;
-    border: 1px solid #ddd;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* Botões */
 button {
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    background-color: #007bff;
+    padding: 10px 15px;
+    font-size: 1rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    margin: 0 5px;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
-
-button.action-btn {
-    padding: 8px 15px;
-    font-size: 14px;
+.add-task {
     background-color: #28a745;
-    margin: 5px;
+    color: #fff;
 }
 
-button.action-btn:hover {
+.add-task:hover {
     background-color: #218838;
 }
 
-button.delete-btn {
-    background-color: #dc3545;
+.edit-task {
+    background-color: #ffc107;
+    color: #fff;
 }
 
-button.delete-btn:hover {
+.edit-task:hover {
+    background-color: #e0a800;
+}
+
+.delete-task {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.delete-task:hover {
     background-color: #c82333;
 }
 
-/* Rodapé */
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #f4f4f9;
-    margin-top: 20px;
-    color: #555;
+.reports {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.reports:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
 }

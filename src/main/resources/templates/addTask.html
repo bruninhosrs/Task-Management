@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Tarefa</title>
+    <title>Adicionar Nova Tarefa</title>
     <link rel="stylesheet" href="../static/css/addTask.css">
 </head>
 <body>
@@ -11,53 +11,19 @@
     <form id="add-task-form">
         <label for="title">Título:</label>
         <input type="text" id="title" name="title" required>
-        <br>
         <label for="description">Descrição:</label>
         <textarea id="description" name="description" required></textarea>
-        <br>
         <label for="dueDate">Data de Vencimento:</label>
         <input type="date" id="dueDate" name="dueDate" required>
-        <br>
         <label for="priority">Prioridade:</label>
-        <select id="priority" name="priority">
+        <select id="priority" name="priority" required>
             <option value="Alta">Alta</option>
             <option value="Média">Média</option>
             <option value="Baixa">Baixa</option>
         </select>
-        <br>
         <button type="submit">Salvar</button>
-        <button type="button" onclick="window.location.href = '../templates/tasks.html'">Voltar</button>
+        <button type="button" onclick="window.location.href='tasks.html'">Voltar</button>
     </form>
-    <p id="add-task-error" class="error"></p>
+    <script src="../static/js/app.js"></script>
 </body>
-<script>
-    document.getElementById("add-task-form").addEventListener("submit", async function (e) {
-        e.preventDefault();
-
-        const title = document.getElementById("title").value;
-        const description = document.getElementById("description").value;
-        const dueDate = document.getElementById("dueDate").value;
-        const priority = document.getElementById("priority").value;
-
-        try {
-            const response = await fetch("http://localhost:8080/tasks", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: `title=${title}&description=${description}&dueDate=${dueDate}&priority=${priority}`,
-            });
-
-            if (!response.ok) {
-                throw new Error(`Erro ao salvar tarefa. Status: ${response.status}`);
-            }
-
-            alert("Tarefa adicionada com sucesso!");
-            window.location.href = "../templates/tasks.html";
-        } catch (error) {
-            console.error("Erro ao salvar tarefa:", error);
-            document.getElementById("add-task-error").textContent = "Erro ao salvar tarefa. Tente novamente.";
-        }
-    });
-</script>
 </html>

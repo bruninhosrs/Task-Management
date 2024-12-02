@@ -7,21 +7,16 @@
     <link rel="stylesheet" href="../static/css/report.css">
 </head>
 <body>
-    <header>
-        <h1>Relatórios de Tarefas</h1>
-    </header>
-    <main>
-        <button onclick="loadReport('general')">Estatísticas Gerais</button>
-        <button onclick="loadReport('overdue')">Tarefas Atrasadas</button>
-        <button onclick="loadReport('completed')">Tarefas Concluídas</button>
-        <button onclick="loadReport('by-priority')">Tarefas por Prioridade</button>
-        <button onclick="loadReport('by-period')">Tarefas do Mês Atual</button>
-        <div id="report-content">
-        </div>
-    </main>
-    <footer>
-        <p>&copy; 2024 Gerenciador de Tarefas</p>
-    </footer>
+    <h1>Relatórios de Tarefas</h1>
+    <div class="buttons">
+        <button data-type="general">Estatísticas Gerais</button>
+        <button data-type="overdue">Tarefas Atrasadas</button>
+        <button data-type="completed">Tarefas Concluídas</button>
+        <button data-type="by-priority">Tarefas por Prioridade</button>
+        <button data-type="by-period">Tarefas do Mês Atual</button>
+    </div>
+    <div id="report-results"></div>
+
     <script src="../static/js/reports.js"></script>
 </body>
 </html>
